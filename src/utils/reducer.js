@@ -224,6 +224,31 @@ const reducerFunc = (state, action) => {
         watchlater: [],
         videoLibUpdated: clearWatchState,
       };
+
+    case "WatchHistory":
+      const historyUpdate = () => {
+        const updatedHistoryList = state.history.find(
+          (item) => item.id === action.payload.id
+        );
+
+        console.log(updatedHistoryList);
+
+        if (updatedHistoryList === undefined) {
+          return [...state.history, action.payload];
+        } else {
+          return state.history;
+        }
+      };
+
+      return {
+        ...state,
+        history: historyUpdate(),
+      };
+    case "ClearHistory":
+      return {
+        ...state,
+        history: [],
+      };
     default:
       return state;
   }
