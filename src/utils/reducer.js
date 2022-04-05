@@ -110,6 +110,63 @@ const reducerFunc = (state, action) => {
         playlists: [],
         videoLibUpdated: clearState,
       };
+    case "LikedVideos":
+      const likeCheck = () => {
+        const updatedVideoLike = state.videoLibUpdated.find(
+          (item) => item.id === action.payload.id
+        );
+
+        if (!updatedVideoLike.videodetailState.LikedVideos) {
+          return [...state.likedvideos, updatedVideoLike];
+        } else {
+          const updatedLibLiked = state.likedvideos.filter(
+            (item) => item.id !== action.payload.id
+          );
+          return updatedLibLiked;
+        }
+      };
+
+      const likeUpdate = () => {
+        return [...state.videoLibUpdated].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                videodetailState: {
+                  ...item.videodetailState,
+                  LikedVideos:
+                    !state.videoLibUpdated[idx].videodetailState.LikedVideos,
+                },
+              }
+            : item;
+        });
+      };
+
+      const likeState = likeUpdate();
+
+      return {
+        ...state,
+        likedvideos: likeCheck(),
+        videoLibUpdated: likeState,
+      };
+    case "ClearLikedVideos":
+      const clearLikedUpdate = () => {
+        return [...state.videoLibUpdated].map((item) => {
+          return {
+            ...item,
+            videodetailState: {
+              ...item.videodetailState,
+              LikedVideos: false,
+            },
+          };
+        });
+      };
+
+      const clearLikedState = clearLikedUpdate();
+      return {
+        ...state,
+        likedvideos: [],
+        videoLibUpdated: clearLikedState,
+      };
     default:
       return state;
   }
