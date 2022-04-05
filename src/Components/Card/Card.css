@@ -1,0 +1,49 @@
+.recommended-videos{
+    padding: 2rem;
+    display: flex;
+    flex:1 1 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--primary-text-color);
+  }
+  
+
+.videoCard{
+    display: flex;
+    flex-direction: column;
+    height: 260px;
+    width: 270px;
+    background-color: var(--menu-bar);
+    cursor:pointer;
+  }
+  
+.video-thumbnail{
+  width: 100%;
+  object-fit: contain;
+  border: 2px solid var(--menu-bar);
+}
+
+.video-title{
+  font-weight: 500;
+  padding: 0 1rem 0 1rem;
+}
+
+.video-footer{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.video-footer small{
+  padding: 0 1rem 0 1rem;
+}
+
+@media screen and (max-width:400px){
+  .videoCard{
+    height: 260px;
+    width: 100%;
+    margin: auto;
+  }
+}

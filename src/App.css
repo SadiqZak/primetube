@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import url(./Components/Header/Header.css);
+@import url(./Components/Sidebar/Sidebar.css);
+@import url(./Components/Card/Card.css);
+@import url(./Components/Chips/Chips.css);
+@import url(./Pages/VideoDetails/VideoDetails.css);
 
 *{
   margin: 0;

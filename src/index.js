@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
+import { CardProvider } from "./utils/card-context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   <Router>
+      <CardProvider>
+        <App />
+      </CardProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
