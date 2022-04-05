@@ -3,9 +3,8 @@ import Chips from "../../Components/Chips/Chips"
 
 const Home=()=>{
   return (
-    <div className="wd-100">
-      <Chips/>
-      <Card/>
+    <div className="color-primary wd-100">
+      Add Home page
       </div>
   )
 }
