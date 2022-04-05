@@ -53,6 +53,63 @@ const reducerFunc = (state, action) => {
         ...state,
         catSelect: action.type,
       };
+    case "AddPlayList":
+      const playCheck = () => {
+        const updatedVideoPlay = state.videoLibUpdated.find(
+          (item) => item.id === action.payload.id
+        );
+
+        if (!updatedVideoPlay.videodetailState.AddPlayList) {
+          return [...state.playlists, updatedVideoPlay];
+        } else {
+          const updatedLibPlayed = state.playlists.filter(
+            (item) => item.id !== action.payload.id
+          );
+          return updatedLibPlayed;
+        }
+      };
+
+      const playUpdate = () => {
+        return [...state.videoLibUpdated].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                videodetailState: {
+                  ...item.videodetailState,
+                  AddPlayList:
+                    !state.videoLibUpdated[idx].videodetailState.AddPlayList,
+                },
+              }
+            : item;
+        });
+      };
+
+      const playState = playUpdate();
+
+      return {
+        ...state,
+        playlists: playCheck(),
+        videoLibUpdated: playState,
+      };
+    case "ClearPlayList":
+      const clearPlayUpdate = () => {
+        return [...state.videoLibUpdated].map((item) => {
+          return {
+            ...item,
+            videodetailState: {
+              ...item.videodetailState,
+              AddPlayList: false,
+            },
+          };
+        });
+      };
+
+      const clearState = clearPlayUpdate();
+      return {
+        ...state,
+        playlists: [],
+        videoLibUpdated: clearState,
+      };
     default:
       return state;
   }
