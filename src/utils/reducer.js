@@ -53,6 +53,31 @@ const reducerFunc = (state, action) => {
         ...state,
         catSelect: action.type,
       };
+    case "Home":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Playlist":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Liked Videos":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Watch Later":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "History":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
     case "AddPlayList":
       const playCheck = () => {
         const updatedVideoPlay = state.videoLibUpdated.find(
