@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@import url(./Components/Header/Header.css);
+
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.flex{
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flex-history-cont{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-column{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+:root{
+  --icon-color:#B3B3B3;
+  --background-color:#121212;
+  --primary-text-color:#FFFFFF;
+  --menu-bar:#212121;
+  --button-color:#3D3D3D;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.video-container{
+  width: 100%;
+  min-height: 90vh;
+  height: max-content;
+  background-color: var(--background-color);
+}
+
+.link-tag{
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+.color-primary{
+  color: var(--primary-text-color);
+}
+
+.wd-100{
+  width: 100%;
+}
+
+.wd-fc-1{
+  width: 2rem;
 }
