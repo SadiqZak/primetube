@@ -6,8 +6,7 @@ A react video library curated for the GenZ.
 
 ## Available feats
 
-* HomePage
-* VideoListingPage
+* HomePage/ VideoListingPage
 * PlaylistManagementPage
 * LikedVideoManagementPage
 * WatchLaterManagementPage
