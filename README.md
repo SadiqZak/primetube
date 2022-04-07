@@ -2,7 +2,7 @@
 
 A react video library curated for the GenZ. 
 
-### Link to [Live Project](primetube.vercel.app)
+### Link to [Live Project](https://primetube.vercel.app)
 
 ## Available feats
 
