@@ -2,11 +2,14 @@ import { Action } from "history";
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CardContext } from "../../utils/card-context";
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 const VideoDetails = () => {
   const { videoId } = useParams();
   const { state, dispatch } = useContext(CardContext);
   return (
+    <div className="video-container flex">
+    <Sidebar />
     <div className="color-primary recommended-videos">
       {[...state.videoLibUpdated]
         .filter((item) => item.id === videoId)
@@ -62,6 +65,7 @@ const VideoDetails = () => {
             </div>
           </div>
         ))}
+    </div>
     </div>
   );
 };

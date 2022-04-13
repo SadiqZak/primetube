@@ -1,5 +1,5 @@
-import filter from '../Backend/controllers/filter';
-import data from '../Backend/db/data';
+import filter from '../backend/controllers/filter';
+import data from '../backend/db/data';
 import reducerFunc from './reducer';
 const { createContext, useReducer, useEffect } = require("react");
 
