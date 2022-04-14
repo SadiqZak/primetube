@@ -53,6 +53,31 @@ const reducerFunc = (state, action) => {
         ...state,
         catSelect: action.type,
       };
+    case "Home":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Playlist":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Liked Videos":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "Watch Later":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
+    case "History":
+      return {
+        ...state,
+        sidebarState: action.type,
+      };
     case "AddPlayList":
       const playCheck = () => {
         const updatedVideoPlay = state.videoLibUpdated.find(
@@ -223,6 +248,31 @@ const reducerFunc = (state, action) => {
         ...state,
         watchlater: [],
         videoLibUpdated: clearWatchState,
+      };
+
+    case "WatchHistory":
+      const historyUpdate = () => {
+        const updatedHistoryList = state.history.find(
+          (item) => item.id === action.payload.id
+        );
+
+        console.log(updatedHistoryList);
+
+        if (updatedHistoryList === undefined) {
+          return [...state.history, action.payload];
+        } else {
+          return state.history;
+        }
+      };
+
+      return {
+        ...state,
+        history: historyUpdate(),
+      };
+    case "ClearHistory":
+      return {
+        ...state,
+        history: [],
       };
     default:
       return state;
