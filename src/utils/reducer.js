@@ -167,6 +167,63 @@ const reducerFunc = (state, action) => {
         likedvideos: [],
         videoLibUpdated: clearLikedState,
       };
+    case "WatchLater":
+      const watchCheck = () => {
+        const updatedVideoWatch = state.videoLibUpdated.find(
+          (item) => item.id === action.payload.id
+        );
+
+        if (!updatedVideoWatch.videodetailState.WatchLater) {
+          return [...state.watchlater, updatedVideoWatch];
+        } else {
+          const updatedLibWatched = state.watchlater.filter(
+            (item) => item.id !== action.payload.id
+          );
+          return updatedLibWatched;
+        }
+      };
+
+      const watchUpdate = () => {
+        return [...state.videoLibUpdated].map((item, idx) => {
+          return item.id === action.payload.id
+            ? {
+                ...item,
+                videodetailState: {
+                  ...item.videodetailState,
+                  WatchLater:
+                    !state.videoLibUpdated[idx].videodetailState.WatchLater,
+                },
+              }
+            : item;
+        });
+      };
+
+      const watchState = watchUpdate();
+
+      return {
+        ...state,
+        watchlater: watchCheck(),
+        videoLibUpdated: watchState,
+      };
+    case "ClearWatchList":
+      const clearWatchUpdate = () => {
+        return [...state.videoLibUpdated].map((item) => {
+          return {
+            ...item,
+            videodetailState: {
+              ...item.videodetailState,
+              WatchLater: false,
+            },
+          };
+        });
+      };
+
+      const clearWatchState = clearWatchUpdate();
+      return {
+        ...state,
+        watchlater: [],
+        videoLibUpdated: clearWatchState,
+      };
     default:
       return state;
   }
