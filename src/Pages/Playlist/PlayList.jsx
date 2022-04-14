@@ -11,7 +11,19 @@ const PlayList=()=>{
       <div>
       <h3>Playlist</h3><button onClick={()=>dispatch({type:"ClearPlayList"})} className="login-btn">Clear All</button>
       </div>  
-        Add Playlist
+      {state.playlists.map(({ id, img, title, source }) => (
+          <Link className="link-tag" to={`/videodetails/${id}`}>
+            <div className="videoCard">
+              <img className="video-thumbnail" src={img} alt="" />
+              <div className="video-footer">
+                <div className="video-title">{title}</div>
+                <div>
+                  <small>{source}</small>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
     </div>
   );
 }
