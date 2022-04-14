@@ -5,6 +5,7 @@
 @import url(./Components/Card/Card.css);
 @import url(./Components/Chips/Chips.css);
 @import url(./Pages/VideoDetails/VideoDetails.css);
+@import url(./Pages/Login/Login.css);
 
 *{
   margin: 0;
