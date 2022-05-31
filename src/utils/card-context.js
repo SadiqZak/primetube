@@ -1,5 +1,6 @@
 import filter from '../backend/controllers/filter';
-import data from '../backend/db/data';
+// import data from '../backend/db/data';
+import { getAllVideoService } from '../services/video-services';
 import reducerFunc from './reducer';
 const { createContext, useReducer, useEffect } = require("react");
 
@@ -10,9 +11,8 @@ const CardProvider = ({ children }) => {
   const [ state, dispatch ] = useReducer(reducerFunc, {
     catSelect: "",
     sidebarState:"",
-    videoLib: [...data],
+    videoLib: [],
     videoLibUpdated:[],
-    // videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
     playlists:[],
     likedvideos:[],
     watchlater:[],
@@ -20,9 +20,19 @@ const CardProvider = ({ children }) => {
  });
 
   useEffect(()=>{
-    dispatch({type:"initialState"})
+    getAllVideos()
   },[])
 
+  const getAllVideos = async() =>{
+    try{
+      const videoResults = await getAllVideoService()
+      if(videoResults.status===200){
+        dispatch({type:"initialState", payload: {videos: videoResults.data.videos}})
+      }
+    }catch(error){
+      console.error(error)
+    }
+  }
   const filteredData = filter(state.videoLibUpdated, state.catSelect)
 
   return (
