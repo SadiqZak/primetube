@@ -5,12 +5,11 @@ const reducerFunc = (state, action) => {
         ...state,
         catSelect: "All",
         sidebarState: "Home",
-        videoLibUpdated: [...state.videoLib],
+        videoLibUpdated: action.payload.videos,
       };
     case "All":
       return {
         ...state,
-
         catSelect: action.type,
       };
     case "Games":
