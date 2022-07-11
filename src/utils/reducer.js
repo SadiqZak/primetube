@@ -140,7 +140,7 @@ const reducerFunc = (state, action) => {
           (item) => item.id === action.payload.id
         );
 
-        if (!updatedVideoLike.videodetailState.LikedVideos) {
+        if (!updatedVideoLike.videodetailState?.LikedVideos) {
           return [...state.likedvideos, updatedVideoLike];
         } else {
           const updatedLibLiked = state.likedvideos.filter(
@@ -255,8 +255,6 @@ const reducerFunc = (state, action) => {
           (item) => item.id === action.payload.id
         );
 
-        console.log(updatedHistoryList);
-
         if (updatedHistoryList === undefined) {
           return [...state.history, action.payload];
         } else {
@@ -273,6 +271,12 @@ const reducerFunc = (state, action) => {
         ...state,
         history: [],
       };
+    case "UpdateCurrentVideo":{
+      return{
+        ...state,
+        currentVideo: action.payload.video
+      }
+    }
     default:
       return state;
   }

@@ -1,16 +1,16 @@
-import filter from '../backend/controllers/filter';
+import filter from './filter';
 // import data from '../backend/db/data';
-import { getAllVideoService } from '../services/video-services';
+import { getAllVideoService, getCategoriesService, getCategoryObjectService, getVideoService } from '../services/video-services';
 import reducerFunc from './reducer';
 const { createContext, useReducer, useEffect } = require("react");
 
 const CardContext = createContext();
 
-// categorySelected: {All:false , Games:false, Sci_Fi:false, JavaScript:false, Documentary:false, History:false, Comedy:false, Podcasts:false, Movies:false  },
 const CardProvider = ({ children }) => {
   const [ state, dispatch ] = useReducer(reducerFunc, {
     catSelect: "",
     sidebarState:"",
+    currentVideo:{},
     videoLib: [],
     videoLibUpdated:[],
     playlists:[],
@@ -21,24 +21,43 @@ const CardProvider = ({ children }) => {
 
   useEffect(()=>{
     getAllVideos()
+    getCategories()
   },[])
 
   const getAllVideos = async() =>{
     try{
-      const videoResults = await getAllVideoService()
-      if(videoResults.status===200){
-        dispatch({type:"initialState", payload: {videos: videoResults.data.videos}})
-      }
+      const response = await getAllVideoService()
+      dispatch({type:"initialState", payload: {videos: response.data.videos}})
     }catch(error){
       console.error(error)
     }
   }
+
+  const getVideo = async({videoId})=>{
+    try{
+      const response =await getVideoService({videoId})
+      console.log(response.data.video)
+      dispatch({type:"UpdateCurrentVideo", payload:{video: response.data.video}})
+    }catch(err){
+      console.error(err)
+    }
+  }
+
+  const getCategories=async()=>{
+    try{
+      const response = await getCategoriesService()
+    }catch(err){
+      console.error(err)
+    }
+  }
+
   const filteredData = filter(state.videoLibUpdated, state.catSelect)
 
   return (
-    <CardContext.Provider value={{ state, dispatch, filteredData }}>
+    <CardContext.Provider value={{ state, dispatch, filteredData, getVideo, getCategories }}>
       {children}
     </CardContext.Provider>
+
   );
 };
 

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { CardProvider } from "./utils/card-context";
-import { AuthProvider } from './backend/utils/auth-context';
+import { AuthProvider } from './utils/auth-context';
 import { makeServer } from "./server";
 
 // Call make Server

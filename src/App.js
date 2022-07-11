@@ -9,7 +9,7 @@ import WatchLater from "./Pages/WatchLater/WatchLater";
 import History from "./Pages/History/History";
 import VideoDetails from "./Pages/VideoDetails/VideoDetails";
 import Login from "./Pages/Login/Login";
-import RequiresAuth from "./backend/utils/require-auth";
+import RequiresAuth from "./utils/require-auth";
 
 import Mockman from "mockman-js";
 
