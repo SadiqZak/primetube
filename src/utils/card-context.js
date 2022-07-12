@@ -134,9 +134,9 @@ const CardProvider = ({ children }) => {
     }
   };
 
-  const postPlaylist = async ({ encodedToken, video }) => {
+  const postPlaylist = async ({ encodedToken, playlist }) => {
     try {
-      const response = await postPlaylistService({ encodedToken, video });
+      const response = await postPlaylistService({ encodedToken, playlist});
       dispatch({ type: "AddPlayList", payload: response.data.playlists });
     } catch (err) {
       console.error(err);

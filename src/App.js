@@ -63,12 +63,8 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route path="/videodetails/:videoId"
-        element={
-          <RequiresAuth>
-            <VideoDetails />
-          </RequiresAuth>
-        } />
+        <Route path="/videodetails/:videoId" element={<VideoDetails />}
+         />
         <Route path="/login" element={<Login />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>

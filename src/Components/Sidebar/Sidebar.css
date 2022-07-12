@@ -51,7 +51,21 @@
         width: 100%;
         display: flex;
         position: fixed;
-        bottom: -100px;
+        bottom: -5px;
         overflow: hidden;
+    }
+
+    .sidebar-child{
+        width: fit-content;
+        font-size: 0;
+    }
+
+    .link-tag{
+        width: fit-content;
+    }
+    
+    .sidebar-wrap{
+        display: flex;
+        flex-direction: row;
     }
 }

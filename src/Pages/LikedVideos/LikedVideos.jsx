@@ -6,6 +6,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 
 const LikedVideos=()=>{
   const { state, dispatch } = useContext(CardContext);
+  
   return (
     <div className="video-container flex">
     <Sidebar />
@@ -13,8 +14,8 @@ const LikedVideos=()=>{
       <div>
       <h3>LikedVideos</h3><button onClick={()=>dispatch({type:"ClearLikedVideos"})} className="login-btn">Clear All</button>
       </div>  
-      {state.likedvideos.map(({ id, img, title, source }) => (
-          <Link key={id} className="link-tag" to={`/videodetails/${id}`}>
+      {state.likedvideos.map(({_id, id, img, title, source }) => (
+          <Link key={id} className="link-tag" to={`/videodetails/${_id}`}>
             <div className="videoCard">
               <img className="video-thumbnail" src={img} alt="" />
               <div className="video-footer">
