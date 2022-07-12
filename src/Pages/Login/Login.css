@@ -33,6 +33,23 @@
     padding: 1rem;
 }
 
+@media screen and (max-width:600px){
+    .login-management-wrapper{
+        margin: auto;
+        padding: 1rem;
+        gap: 1rem;
+
+    }
+
+    .login-wrapper{
+        margin: auto;
+        min-height: 200px;
+        height: max-content;
+        width:250px;
+        padding:0.5rem
+    }
+}
+
 .flex-dir-column-login{
     gap:0.5rem;
     display: flex;
