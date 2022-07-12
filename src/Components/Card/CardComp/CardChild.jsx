@@ -4,7 +4,6 @@ import { CardContext } from "../../../utils/card-context";
 
 const CardChild = ({ _id, id, img, title, source, videodetailState }) => {
   const {dispatch, getVideo} =useContext(CardContext)
-  console.log(_id)
 
   const clickHandler = ()=>{
     dispatch({type:"WatchHistory", payload:{id, img, title ,source , videodetailState:{videodetailState}}})

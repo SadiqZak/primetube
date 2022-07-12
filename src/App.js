@@ -10,6 +10,7 @@ import History from "./Pages/History/History";
 import VideoDetails from "./Pages/VideoDetails/VideoDetails";
 import Login from "./Pages/Login/Login";
 import RequiresAuth from "./utils/require-auth";
+import Playlists from "./Pages/Playlist/Component/Playlists";
 
 import Mockman from "mockman-js";
 
@@ -63,7 +64,19 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route path="/videodetails/:videoId" element={<VideoDetails />}
+        <Route path="/videodetails/:videoId" 
+        element={
+          <RequiresAuth>
+            <VideoDetails />
+          </RequiresAuth>
+        }
+         />
+          <Route path="/playlists/:playlistId" 
+        element={
+          <RequiresAuth>
+            <Playlists />
+          </RequiresAuth>
+        }
          />
         <Route path="/login" element={<Login />} />
         <Route path="/mockman" element={<Mockman />} />

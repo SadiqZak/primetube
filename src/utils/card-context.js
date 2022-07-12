@@ -12,7 +12,9 @@ import {
   deleteWatchlaterService,
   getPlaylistService,
   postPlaylistService,
-  deletePlaylistService
+  deletePlaylistService,
+  postPlaylistVideoService,
+  deletePlaylistVideoService
 } from "../services/video-services";
 import reducerFunc from "./reducer";
 const { createContext, useReducer, useEffect } = require("react");
@@ -27,6 +29,7 @@ const CardProvider = ({ children }) => {
     videoLib: [],
     videoLibUpdated: [],
     playlists: [],
+    newPlaylists:[],
     likedvideos: [],
     watchlater: [],
     history: [],
@@ -127,7 +130,6 @@ const CardProvider = ({ children }) => {
   const getPlaylist = async ({ encodedToken }) => {
     try {
       const response = await getPlaylistService({ encodedToken });
-      console.log(response.data.playlists)
       dispatch({ type: "AddPlayList", payload: response.data.playlists });
     } catch (err) {
       console.error(err);
@@ -143,15 +145,33 @@ const CardProvider = ({ children }) => {
     }
   };
 
-  const deletePlaylist = async ({ encodedToken, videoId }) => {
+  const deletePlaylist = async ({ encodedToken, playlistId }) => {
     try {
-      const response = await deletePlaylistService({ encodedToken, videoId });
+      const response = await deletePlaylistService({ encodedToken, playlistId });
       dispatch({ type: "AddPlayList", payload: response.data.playlists });
     } catch (err) {
       console.error(err);
     }
   };
   
+  const postPlaylistVideo = async({encodedToken, playlistId, video})=>{
+    try{
+      const response = await postPlaylistVideoService({encodedToken, playlistId, video})
+      dispatch({ type: "AddPlayList", payload: response.data.playlists });
+    }catch(err){
+      console.error(err)
+    }
+  }
+
+  const deletePlaylistVideo = async({encodedToken, playlistId, videoId})=>{
+    try{
+      const response = await deletePlaylistVideoService({encodedToken, playlistId, videoId})
+      console.log(response.data.playlists)
+      dispatch({ type: "AddPlayList", payload: response.data.playlists });
+    }catch(err){
+      console.error(err)
+    }
+  }
   const filteredData = filter(state.videoLibUpdated, state.catSelect);
 
   return (
@@ -170,7 +190,9 @@ const CardProvider = ({ children }) => {
         deleteWatchlater,
         getPlaylist,
         postPlaylist,
-        deletePlaylist
+        deletePlaylist,
+        postPlaylistVideo,
+        deletePlaylistVideo
       }}
     >
       {children}

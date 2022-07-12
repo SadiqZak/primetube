@@ -14,7 +14,7 @@ const Home=()=>{
       getUserLikes({encodedToken: token})
       getWatchlater({encodedToken: token})
       getPlaylist({encodedToken:token})
-  },[])
+  },[token])
 
   return (
     <div className="video-container flex">

@@ -82,11 +82,6 @@ const reducerFunc = (state, action) => {
         ...state,
         playlists: action.payload
       };
-    case "ClearPlayList":
-      return {
-        ...state,
-        playlists: [],
-      };
     case "LikedVideos":
       return {
         ...state,

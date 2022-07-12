@@ -81,7 +81,23 @@ export const postPlaylistService = ({encodedToken, playlist})=>{
 }
 
 export const deletePlaylistService = ({encodedToken,playlistId})=>{
-    return axios.get(`/api/user/playlists/${playlistId}`,{
+    return axios.delete(`/api/user/playlists/${playlistId}`,{
+        headers:{
+            authorization:encodedToken
+        }
+    })
+}
+
+export const postPlaylistVideoService = ({encodedToken, video, playlistId})=>{
+    return axios.post(`/api/user/playlists/${playlistId}`,{video},{
+        headers:{
+            authorization:encodedToken
+        }
+    })
+}
+
+export const deletePlaylistVideoService = ({encodedToken, playlistId, videoId})=>{
+    return axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
         headers:{
             authorization:encodedToken
         }

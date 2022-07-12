@@ -7,7 +7,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 const WatchLater=()=> {
   const { state, dispatch } = useContext(CardContext);
   const {watchlater} = state
-  console.log(watchlater)
+ 
   return (
     <div className="video-container flex">
     <Sidebar />
