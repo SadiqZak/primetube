@@ -6,6 +6,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 
 const WatchLater=()=> {
   const { state, dispatch } = useContext(CardContext);
+  const {watchlater} = state
   return (
     <div className="video-container flex">
     <Sidebar />
@@ -13,7 +14,7 @@ const WatchLater=()=> {
       <div>
       <h3>Watch Later</h3><button onClick={()=>dispatch({type:"ClearWatchList"})} className="login-btn">Clear All</button>
       </div>  
-      {state.watchlater.map(({ id, img, title, source }) => (
+      {watchlater.map(({ id, img, title, source }) => (
           <Link className="link-tag" to={`/videodetails/${id}`}>
             <div className="videoCard">
               <img className="video-thumbnail" src={img} alt="" />

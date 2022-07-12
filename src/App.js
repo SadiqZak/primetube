@@ -26,7 +26,11 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={
+            <RequiresAuth>
+              <Home />
+            </RequiresAuth>
+          } />
         <Route
           path="/playlist"
           element={
@@ -59,7 +63,12 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route path="/videodetails/:videoId" element={<VideoDetails />} />
+        <Route path="/videodetails/:videoId"
+        element={
+          <RequiresAuth>
+            <VideoDetails />
+          </RequiresAuth>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>

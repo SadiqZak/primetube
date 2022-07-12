@@ -11,7 +11,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/box4SFtGvA0/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=box4SFtGvA0&ab_channel=CBSNews",
     source:"CBS News ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"hNQC5GyumQ4",
@@ -47,7 +46,6 @@ export const videos = [
     img: "https://img.youtube.com/vi/P6EyjIvbex8/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=P6EyjIvbex8&ab_channel=WatchMojo.com",
     source:"WatchMojo.com ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 
 {
@@ -57,7 +55,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/8aGhZQkoFbQ/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf",
     source:"JSConf ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"Ezk2AwqgS9Q",
@@ -66,7 +63,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/Ezk2AwqgS9Q/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=Ezk2AwqgS9Q&list=PLzvhQUIpvvuj5KPnyPyWsvgyzNkX_ACPA&ab_channel=TanayPratap",
     source:"Tanay Pratap ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"uD4izuDMUQA",
@@ -75,7 +71,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/uD4izuDMUQA/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=uD4izuDMUQA&ab_channel=melodysheep",
     source:"melodysheep ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 
 {
@@ -85,7 +80,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/w9zmSAsGj1Q/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=w9zmSAsGj1Q&ab_channel=KingsandGenerals",
     source:"Kings and Generals ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"Gv4Af83KFrE",
@@ -94,7 +88,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/Gv4Af83KFrE/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=Gv4Af83KFrE&ab_channel=HISTORY",
     source:"HISTORY ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"TZgyeEE2hx4",
@@ -103,7 +96,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/TZgyeEE2hx4/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=TZgyeEE2hx4&ab_channel=KennySebastian",
     source:"Kenny Sebastian ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"5d8DpqthAGo",
@@ -112,7 +104,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/5d8DpqthAGo/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=5d8DpqthAGo&ab_channel=TanmayBhat",
     source:"Tanmay Bhat ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"4IkTLiU5Q0k",
@@ -121,7 +112,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/4IkTLiU5Q0k/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=4IkTLiU5Q0k&ab_channel=DanielFernandes",
     source:"Daniel Fernandes ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"nH6WUTFmgg8",
@@ -130,7 +120,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/nH6WUTFmgg8/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=nH6WUTFmgg8&ab_channel=BeerBiceps",
     source:"BeerBiceps ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"6x1i0K4Eg1g",
@@ -139,7 +128,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/6x1i0K4Eg1g/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=6x1i0K4Eg1g&ab_channel=AliAbdaal",
     source:"Ali Abdaal ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"AQQNn7DH0VI",
@@ -148,7 +136,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/AQQNn7DH0VI/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=AQQNn7DH0VI&ab_channel=KinoCheck.com",
     source:"KinoCheck.com ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"JKa05nyUmuQ",
@@ -157,7 +144,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/JKa05nyUmuQ/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=JKa05nyUmuQ&ab_channel=ExcelMovies",
     source:"Excel Movies ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"YKSNBIlM_bY",
@@ -166,7 +152,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/YKSNBIlM_bY/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=YKSNBIlM_bY&ab_channel=FandomTopics",
     source:"Fandom Topics ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 {
     _id:"Ua-b6CDFU-A",
@@ -175,7 +160,6 @@ export const videos = [
     img: "http://img.youtube.com/vi/Ua-b6CDFU-A/maxresdefault.jpg",
     url: "https://www.youtube.com/watch?v=Ua-b6CDFU-A&ab_channel=Netflix",
     source:"Netflix ©",
-    videodetailState:{LikedVideos:false, AddPlayList:false, WatchLater:false},
 },
 
 ];

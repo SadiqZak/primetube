@@ -5,7 +5,8 @@ import { AuthContext } from "../../utils/auth-context";
 
 const Header = () => {
   const navigate = useNavigate()
-  const { auth, setAuth} = useContext(AuthContext)
+  const { stateAuth, dispatch} = useContext(AuthContext)
+  const {isAuthenticated} = stateAuth
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -15,7 +16,7 @@ const Header = () => {
           <span className="search-icon material-icons">search</span>
         </div>
         <div className="header_right">
-        { !auth.isAuthenticated && (
+        { !isAuthenticated && (
           <button
           className="login-btn"
             onClick={() => {
@@ -25,12 +26,13 @@ const Header = () => {
             Login
           </button>
         )}
-        {auth.isAuthenticated && (
+        {isAuthenticated && (
           <button
           className="login-btn"
-            onClick={() => {
-              setAuth({...auth, isAuthenticated:!auth.isAuthenticated})
-            }}
+          onClick={() => {
+            dispatch({type:"LogoutUser"})
+            navigate('/login')
+          }}
           >
             Logout
           </button>

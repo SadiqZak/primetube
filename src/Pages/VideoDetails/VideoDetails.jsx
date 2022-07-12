@@ -1,12 +1,23 @@
 import React, { useContext } from "react";
+import {useNavigate} from 'react-router-dom'
 import { CardContext } from "../../utils/card-context";
 import Sidebar from '../../Components/Sidebar/Sidebar';
+import { AuthContext } from "../../utils/auth-context";
 
 const VideoDetails = () => {
-  const { state, dispatch } = useContext(CardContext);
-  const {currentVideo} = state
+  const { state, dispatch, postUserLike, deleteUserLike, deleteWatchlater, postWatchlater, postPlaylist, deletePlaylist } = useContext(CardContext);
+  const {stateAuth} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const {currentVideo, likedvideos, watchlater, playlists} = state
+  const {token} = stateAuth
 
-  const {id, title, source, img} = currentVideo
+  const {_id, id, title, source, img} = currentVideo
+
+  const checkLiked =()=> likedvideos?.some((likedVideo)=>likedVideo._id===_id)
+  const checkWatched = ()=> watchlater?.some((watchedVideo)=>watchedVideo._id===_id)
+  const checkPlaylisted = ()=> playlists?.some((playlisted)=>playlisted._id===_id)
+
+  console.log(playlists)
 
   return (
     <div className="video-container flex">
@@ -15,7 +26,7 @@ const VideoDetails = () => {
           <div className="video-header-container">
             <iframe
               className="video-header"
-              src={`https://www.youtube.com/embed/${id}`}
+              src={`https://www.youtube.com/embed/${_id}`}
               title="YouTube video player"
               frameBorder="0"
             ></iframe>
@@ -29,9 +40,14 @@ const VideoDetails = () => {
               <div className="video-footer-right">
                 <div
                   onClick={() => {
-                    dispatch({ type: "LikedVideos", payload: {id, title, source, img} });
+                    if(checkLiked()){
+                      deleteUserLike({encodedToken:token, videoId:_id})
+                    }else{
+                      postUserLike({encodedToken:token, video:currentVideo})
+                    }
                   }}
-                  className={`chips chips-vid ${state.videoLibUpdated.find((item)=>item.id===id)?.videodetailState?.LikedVideos && "selected"}`}
+                  //state.videoLibUpdated.find((item)=>item.id===id)?.videodetailState?.LikedVideos
+                  className={`chips chips-vid ${checkLiked() && "selected"}`}
                 >
                  <span className="material-icons wd-fc-1">thumb_up_alt_outlined</span>
                  <div>Like Video</div>
@@ -39,9 +55,13 @@ const VideoDetails = () => {
 
                 <div
                   onClick={() => {
-                    dispatch({ type: "WatchLater", payload: {id, title, source, img}  });
+                    if(checkWatched()){
+                      deleteWatchlater({encodedToken:token, videoId:_id})
+                    }else{
+                      postWatchlater({encodedToken:token, video:currentVideo})
+                    }
                   }}
-                  className={`chips chips-vid ${state.videoLibUpdated.find((item)=>item.id===id)?.videodetailState?.WatchLater && "selected"}`}
+                  className={`chips chips-vid ${checkWatched() && "selected"}`}
                 >
                  <span className="material-icons wd-fc-1">watch_later_outlined</span>
                  <div>Watch Later</div>
@@ -49,9 +69,13 @@ const VideoDetails = () => {
 
                 <div
                   onClick={() => {
-                    dispatch({ type: "AddPlayList", payload: {id, title, source, img}  });
+                    if(checkPlaylisted()){
+                      deletePlaylist({encodedToken:token, videoId:_id})
+                    }else{
+                      postPlaylist({encodedToken:token, playlist:currentVideo})
+                    }
                   }}
-                  className={`chips chips-vid ${state.videoLibUpdated.find((item)=>item.id===id)?.videodetailState?.AddPlayList && "selected"}`}
+                  className={`chips chips-vid ${checkPlaylisted() && "selected"}`}
                 >
                  <span className="material-icons wd-fc-1">playlist_play</span>
                  <div>Add to Playlist</div>
