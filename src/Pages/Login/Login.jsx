@@ -5,7 +5,7 @@ import { AuthContext } from "../../utils/auth-context";
 
 const Login = () => {
   const {LoginUser, stateAuth } = useContext(AuthContext);
-  const [userLog, setUserLog] = useState({ email: "adarshbalika@gmail.com", password: "adarshbalika" });
+  const [userLog, setUserLog] = useState({email: "mozak@gmail.com", password: "moZak@NeoG22"});
   const navigate = useNavigate();
   const location = useLocation();
   const {isAuthenticated} = stateAuth
@@ -48,7 +48,7 @@ const Login = () => {
                   }
                   className="login-inp"
                   type="email"
-                  placeholder="adarshbalika@gmail.com"
+                  placeholder="mozak@gmail.com"
                   required
                 />
               </div>
@@ -61,7 +61,7 @@ const Login = () => {
                   }
                   className="login-inp"
                   type="password"
-                  placeholder="adarshbalika"
+                  placeholder="moZak@NeoG22"
                   required
                 />
               </div>
