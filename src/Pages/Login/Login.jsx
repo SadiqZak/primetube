@@ -1,26 +1,27 @@
+import { useEffect } from "react";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../backend/utils/auth-context";
-import { LoginService } from "../../services/auth-services";
+import { AuthContext } from "../../utils/auth-context";
 
 const Login = () => {
-  const { auth, setAuth } = useContext(AuthContext);
-  const [userLog, setUserLog] = useState({ email: "", password: "" });
+  const {LoginUser, stateAuth } = useContext(AuthContext);
+  const [userLog, setUserLog] = useState({ email: "adarshbalika@gmail.com", password: "adarshbalika" });
   const navigate = useNavigate();
   const location = useLocation();
+  const {isAuthenticated} = stateAuth
 
   const loginHandler = async (e) => {
     e.preventDefault();
+    LoginUser({email: userLog.email,password: userLog.password }) 
+  };
 
-    const data = await LoginService(userLog.email, userLog.password);
-
-    if (data) {
-      setAuth({ ...auth, token: data.token, isAuthenticated: true });
+  useEffect(()=>{
+    if(isAuthenticated){
       return location.state?.from?.pathname
         ? navigate(location.state?.from?.pathname)
         : navigate("/");
     }
-  };
+  },[isAuthenticated])
 
   return (
     <>
@@ -72,7 +73,7 @@ const Login = () => {
               <button
                 className="login-btn"
                 onClick={() => {
-                  setAuth({ ...auth, isAuthenticated: !auth.isAuthenticated });
+                  LoginUser({email: userLog.email, password: userLog.password }) 
                   navigate(location.state?.from?.pathname);
                 }}
               >
@@ -83,7 +84,7 @@ const Login = () => {
               <button
                 className="login-btn"
                 onClick={() => {
-                  setAuth({ ...auth, isAuthenticated: !auth.isAuthenticated });
+                  LoginUser({email: userLog.email, password: userLog.password }) 
                   navigate("/");
                 }}
               >

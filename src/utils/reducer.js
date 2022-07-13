@@ -78,175 +78,29 @@ const reducerFunc = (state, action) => {
         sidebarState: action.type,
       };
     case "AddPlayList":
-      const playCheck = () => {
-        const updatedVideoPlay = state.videoLibUpdated.find(
-          (item) => item.id === action.payload.id
-        );
-
-        if (!updatedVideoPlay.videodetailState.AddPlayList) {
-          return [...state.playlists, updatedVideoPlay];
-        } else {
-          const updatedLibPlayed = state.playlists.filter(
-            (item) => item.id !== action.payload.id
-          );
-          return updatedLibPlayed;
-        }
-      };
-
-      const playUpdate = () => {
-        return [...state.videoLibUpdated].map((item, idx) => {
-          return item.id === action.payload.id
-            ? {
-                ...item,
-                videodetailState: {
-                  ...item.videodetailState,
-                  AddPlayList:
-                    !state.videoLibUpdated[idx].videodetailState.AddPlayList,
-                },
-              }
-            : item;
-        });
-      };
-
-      const playState = playUpdate();
-
       return {
         ...state,
-        playlists: playCheck(),
-        videoLibUpdated: playState,
-      };
-    case "ClearPlayList":
-      const clearPlayUpdate = () => {
-        return [...state.videoLibUpdated].map((item) => {
-          return {
-            ...item,
-            videodetailState: {
-              ...item.videodetailState,
-              AddPlayList: false,
-            },
-          };
-        });
-      };
-
-      const clearState = clearPlayUpdate();
-      return {
-        ...state,
-        playlists: [],
-        videoLibUpdated: clearState,
+        playlists: action.payload
       };
     case "LikedVideos":
-      const likeCheck = () => {
-        const updatedVideoLike = state.videoLibUpdated.find(
-          (item) => item.id === action.payload.id
-        );
-
-        if (!updatedVideoLike.videodetailState.LikedVideos) {
-          return [...state.likedvideos, updatedVideoLike];
-        } else {
-          const updatedLibLiked = state.likedvideos.filter(
-            (item) => item.id !== action.payload.id
-          );
-          return updatedLibLiked;
-        }
-      };
-
-      const likeUpdate = () => {
-        return [...state.videoLibUpdated].map((item, idx) => {
-          return item.id === action.payload.id
-            ? {
-                ...item,
-                videodetailState: {
-                  ...item.videodetailState,
-                  LikedVideos:
-                    !state.videoLibUpdated[idx].videodetailState.LikedVideos,
-                },
-              }
-            : item;
-        });
-      };
-
-      const likeState = likeUpdate();
-
       return {
         ...state,
-        likedvideos: likeCheck(),
-        videoLibUpdated: likeState,
+        likedvideos: action.payload,
       };
     case "ClearLikedVideos":
-      const clearLikedUpdate = () => {
-        return [...state.videoLibUpdated].map((item) => {
-          return {
-            ...item,
-            videodetailState: {
-              ...item.videodetailState,
-              LikedVideos: false,
-            },
-          };
-        });
-      };
-
-      const clearLikedState = clearLikedUpdate();
       return {
         ...state,
         likedvideos: [],
-        videoLibUpdated: clearLikedState,
       };
     case "WatchLater":
-      const watchCheck = () => {
-        const updatedVideoWatch = state.videoLibUpdated.find(
-          (item) => item.id === action.payload.id
-        );
-
-        if (!updatedVideoWatch.videodetailState.WatchLater) {
-          return [...state.watchlater, updatedVideoWatch];
-        } else {
-          const updatedLibWatched = state.watchlater.filter(
-            (item) => item.id !== action.payload.id
-          );
-          return updatedLibWatched;
-        }
-      };
-
-      const watchUpdate = () => {
-        return [...state.videoLibUpdated].map((item, idx) => {
-          return item.id === action.payload.id
-            ? {
-                ...item,
-                videodetailState: {
-                  ...item.videodetailState,
-                  WatchLater:
-                    !state.videoLibUpdated[idx].videodetailState.WatchLater,
-                },
-              }
-            : item;
-        });
-      };
-
-      const watchState = watchUpdate();
-
       return {
         ...state,
-        watchlater: watchCheck(),
-        videoLibUpdated: watchState,
+        watchlater: action.payload,
       };
     case "ClearWatchList":
-      const clearWatchUpdate = () => {
-        return [...state.videoLibUpdated].map((item) => {
-          return {
-            ...item,
-            videodetailState: {
-              ...item.videodetailState,
-              WatchLater: false,
-            },
-          };
-        });
-      };
-
-      const clearWatchState = clearWatchUpdate();
       return {
         ...state,
         watchlater: [],
-        videoLibUpdated: clearWatchState,
       };
 
     case "WatchHistory":
@@ -254,8 +108,6 @@ const reducerFunc = (state, action) => {
         const updatedHistoryList = state.history.find(
           (item) => item.id === action.payload.id
         );
-
-        console.log(updatedHistoryList);
 
         if (updatedHistoryList === undefined) {
           return [...state.history, action.payload];
@@ -273,9 +125,79 @@ const reducerFunc = (state, action) => {
         ...state,
         history: [],
       };
+    case "UpdateCurrentVideo":{
+      return{
+        ...state,
+        currentVideo: action.payload.video
+      }
+    }
+    case "UpdateUser":{
+      return{
+        ...state,
+        user: action.payload.foundUser,
+        token: action.payload.encodedToken,
+        isAuthenticated: true
+      }
+    }
+    case "LogoutUser":{
+      return{
+        ...state,
+        user: {},
+        token: null,
+        isAuthenticated: false
+      }
+    }
     default:
       return state;
   }
 };
 
 export default reducerFunc;
+
+
+//--DND->Function to manually update liked videos and similarly watchlater--
+      // const likeCheck = () => {
+      //   const updatedVideoLike = state.videoLibUpdated.find(
+      //     (item) => item.id === action.payload.id
+      //   );
+
+      //   if (!updatedVideoLike.videodetailState?.LikedVideos) {
+      //     return [...state.likedvideos, updatedVideoLike];
+      //   } else {
+      //     const updatedLibLiked = state.likedvideos.filter(
+      //       (item) => item.id !== action.payload.id
+      //     );
+      //     return updatedLibLiked;
+      //   }
+      // };
+
+      // const likeUpdate = () => {
+      //   return [...state.videoLibUpdated].map((item, idx) => {
+      //     return item.id === action.payload.find((liked)=>liked.id===item.id)?.id
+      //       ? {
+      //           ...item,
+      //           videodetailState: {
+      //             ...item.videodetailState,
+      //             LikedVideos:
+      //               !state.videoLibUpdated[idx].videodetailState.LikedVideos,
+      //           },
+      //         }
+      //       : item;
+      //   });
+      // };
+
+      // const likeState = likeUpdate();
+//--------------------------------------------------------
+      // const clearLikedUpdate = () => {
+      //   return [...state.videoLibUpdated].map((item) => {
+      //     return {
+      //       ...item,
+      //       videodetailState: {
+      //         ...item.videodetailState,
+      //         LikedVideos: false,
+      //       },
+      //     };
+      //   });
+      // };
+
+      // const clearLikedState = clearLikedUpdate();
