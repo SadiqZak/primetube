@@ -104,26 +104,9 @@ const reducerFunc = (state, action) => {
       };
 
     case "WatchHistory":
-      const historyUpdate = () => {
-        const updatedHistoryList = state.history.find(
-          (item) => item.id === action.payload.id
-        );
-
-        if (updatedHistoryList === undefined) {
-          return [...state.history, action.payload];
-        } else {
-          return state.history;
-        }
-      };
-
       return {
         ...state,
-        history: historyUpdate(),
-      };
-    case "ClearHistory":
-      return {
-        ...state,
-        history: [],
+        history: action.payload.history,
       };
     case "UpdateCurrentVideo":{
       return{
@@ -135,6 +118,15 @@ const reducerFunc = (state, action) => {
       return{
         ...state,
         user: action.payload.foundUser,
+        token: action.payload.encodedToken,
+        isAuthenticated: true
+      }
+    }
+    case "UpdateUserSignup":{
+      console.log(action.payload)
+      return{
+        ...state,
+        user: action.payload.createdUser,
         token: action.payload.encodedToken,
         isAuthenticated: true
       }

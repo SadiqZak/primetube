@@ -7,8 +7,8 @@ const Card = () =>{
 
     return<>
         <div className='recommended-videos'>
-          {filteredData.map(({id,_id, img, title, source, videodetailState})=>(
-              <CardChild key={id} _id={_id} id={id} img={img} title={title} source={source} videodetailState={videodetailState}/>
+          {filteredData.map((video)=>(
+              <CardChild key={video.id} video={video}/>
           ))}
         </div>
     </>

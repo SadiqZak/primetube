@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardContext } from "../../utils/card-context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from '../../Components/Sidebar/Sidebar';
+import { AuthContext } from "../../utils/auth-context";
 
 const History = () => {
-  const { state, dispatch } = useContext(CardContext);
+  const { state, dispatch, getUserHistory, deleteUserHistory} = useContext(CardContext);
+  const {stateAuth} = useContext(AuthContext)
+  const {token} = stateAuth
+
+  useEffect(()=>{
+    getUserHistory({encodedToken:token})
+  },[])
+
+  const clickHandler =()=>{
+    deleteUserHistory({encodedToken:token})
+  }
   return (
     <div className="video-container flex">
     <Sidebar />
     <div className="recommended-videos color-primary">
       <div>
-      <h3>History</h3><button onClick={()=>dispatch({type:"ClearHistory"})} className="login-btn">Clear History</button>
+      <h3>History</h3><button onClick={clickHandler} className="login-btn">Clear History</button>
       </div>  
       {[...state.history].map(({ id, img, title, source }) => (
           <Link key={id} className="link-tag" to={`/videodetails/${id}`}>
