@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../utils/auth-context";
 
 const Login = () => {
@@ -91,6 +91,7 @@ const Login = () => {
                 Login as Guest
               </button>
             )}
+            <div>Don't have an account? <Link className="signup-link" to='/signup'>Sign up here</Link> </div>
           </div>
         </div>
       </div>

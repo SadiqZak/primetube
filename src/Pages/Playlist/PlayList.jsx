@@ -17,7 +17,7 @@ const PlayList=()=>{
       <div>
       <h3>Playlist</h3>
       </div>  
-       {state.playlists.map(({ _id, title }) => (
+       {state.playlists?.map(({ _id, title }) => (
           <Link key={_id} className="link-tag" to={`/playlists/${_id}`}>
             <div className="videoCardPlaylist">
             <small>click to access playlist</small>

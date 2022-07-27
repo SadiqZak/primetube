@@ -14,7 +14,10 @@ import {
   postPlaylistService,
   deletePlaylistService,
   postPlaylistVideoService,
-  deletePlaylistVideoService
+  deletePlaylistVideoService,
+  getHistoryService,
+  postHistoryService,
+  deleteHistoryService
 } from "../services/video-services";
 import reducerFunc from "./reducer";
 const { createContext, useReducer, useEffect } = require("react");
@@ -172,6 +175,34 @@ const CardProvider = ({ children }) => {
       console.error(err)
     }
   }
+
+  const getUserHistory = async({encodedToken})=>{
+    try {
+      const response = await getHistoryService({encodedToken})
+      dispatch({type:"WatchHistory", payload:response.data})
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const postUserHistory = async({encodedToken, video})=>{
+    try {
+      const response = await postHistoryService({encodedToken, video})
+      dispatch({type:"WatchHistory", payload:response.data})
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const deleteUserHistory = async({encodedToken}) =>{
+    try {
+      const response = await deleteHistoryService({encodedToken})
+      dispatch({type:"WatchHistory", payload:response.data})
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   const filteredData = filter(state.videoLibUpdated, state.catSelect);
 
   return (
@@ -192,7 +223,10 @@ const CardProvider = ({ children }) => {
         postPlaylist,
         deletePlaylist,
         postPlaylistVideo,
-        deletePlaylistVideo
+        deletePlaylistVideo,
+        getUserHistory,
+        postUserHistory,
+        deleteUserHistory
       }}
     >
       {children}

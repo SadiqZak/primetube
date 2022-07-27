@@ -27,6 +27,7 @@ const VideoDetails = () => {
   const navigate = useNavigate();
   const { currentVideo, likedvideos, watchlater, playlists } = state;
   const [createPlaylist, setCreatePlaylist] = useState(false);
+  const [currPlaylistId, setCurrPlaylistId] = useState("");
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { token } = stateAuth;
 
@@ -85,10 +86,22 @@ const VideoDetails = () => {
                 //state.videoLibUpdated.find((item)=>item.id===id)?.videodetailState?.LikedVideos
                 className={`chips chips-vid ${checkLiked() && "selected"}`}
               >
-                <span className="material-icons wd-fc-1">
-                  thumb_up_alt_outlined
-                </span>
-                <div>Like</div>
+                {checkLiked() && (
+                  <>
+                    <span className="material-icons wd-fc-1">
+                      thumb_up_alt_outlined
+                    </span>
+                    <div>Liked</div>
+                  </>
+                )}
+                {!checkLiked() && (
+                  <>
+                    <span className="material-icons wd-fc-1">
+                      thumb_up_alt_outlined
+                    </span>
+                    <div>Like</div>
+                  </>
+                )}
               </div>
 
               <div

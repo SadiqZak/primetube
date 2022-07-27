@@ -103,3 +103,28 @@ export const deletePlaylistVideoService = ({encodedToken, playlistId, videoId})=
         }
     })
 }
+
+export const getHistoryService = ({encodedToken})=>{
+    return axios.get(`/api/user/history`,{
+        headers:{
+            authorization:encodedToken
+        }
+    })
+}
+
+export const postHistoryService = ({encodedToken, video})=>{
+    return axios.post(`/api/user/history`, {video},{
+        headers:{
+            authorization:encodedToken
+        }
+    })
+
+}
+
+export const deleteHistoryService = ({encodedToken})=>{
+    return axios.delete(`/api/user/history/all`,{
+        headers:{
+            authorization:encodedToken
+        }
+    })
+}

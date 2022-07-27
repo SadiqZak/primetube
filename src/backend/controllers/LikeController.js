@@ -12,6 +12,7 @@ import { requiresAuth } from "../utils/authUtils";
  * send GET Request at /api/user/likes
  * */
 export const getLikedVideosHandler = function (schema, request) {
+  // debugger
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {
@@ -42,6 +43,7 @@ export const getLikedVideosHandler = function (schema, request) {
  * */
 
 export const addItemToLikedVideos = function (schema, request) {
+  debugger
   const user = requiresAuth.call(this, request);
   if (user) {
     const { video } = JSON.parse(request.requestBody);

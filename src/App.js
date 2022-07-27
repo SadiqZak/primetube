@@ -13,6 +13,7 @@ import RequiresAuth from "./utils/require-auth";
 import Playlists from "./Pages/Playlist/Component/Playlists";
 
 import Mockman from "mockman-js";
+import Signup from "./Pages/Signup/Signup";
 
 function MockAPI() {
   return (
@@ -79,6 +80,7 @@ function App() {
         }
          />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

@@ -15,7 +15,7 @@ const WatchLater=()=> {
       <div>
       <h3>Watch Later</h3><button onClick={()=>dispatch({type:"ClearWatchList"})} className="login-btn">Clear All</button>
       </div>  
-      {watchlater.map(({_id, id, img, title, source }) => (
+      {watchlater?.map(({_id, id, img, title, source }) => (
           <Link className="link-tag" to={`/videodetails/${_id}`}>
             <div className="videoCard">
               <img className="video-thumbnail" src={img} alt="" />

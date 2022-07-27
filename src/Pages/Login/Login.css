@@ -17,6 +17,9 @@
     background-color: var(--menu-bar);
 }
 
+.signup-link{
+    color:var(--white-color)
+}
 .login-wrapper{
     margin: auto;
     min-height: 300px;

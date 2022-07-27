@@ -14,7 +14,7 @@ const LikedVideos=()=>{
       <div>
       <h3>LikedVideos</h3><button onClick={()=>dispatch({type:"ClearLikedVideos"})} className="login-btn">Clear All</button>
       </div>  
-      {state.likedvideos.map(({_id, id, img, title, source }) => (
+      {state.likedvideos?.map(({_id, id, img, title, source }) => (
           <Link key={id} className="link-tag" to={`/videodetails/${_id}`}>
             <div className="videoCard">
               <img className="video-thumbnail" src={img} alt="" />
