@@ -4,9 +4,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { AuthContext } from "../../utils/auth-context";
+import Header from "../../Components/Header/Header";
 
 const History = () => {
-  const { state, dispatch, getUserHistory, deleteUserHistory} = useContext(CardContext);
+  const { state, getUserHistory, deleteUserHistory} = useContext(CardContext);
   const {stateAuth} = useContext(AuthContext)
   const {token} = stateAuth
 

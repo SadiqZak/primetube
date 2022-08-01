@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../utils/auth-context";
+import Header from "../../Components/Header/Header";
 
 const Login = () => {
   const {LoginUser, stateAuth } = useContext(AuthContext);

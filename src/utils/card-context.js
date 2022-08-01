@@ -30,6 +30,7 @@ const CardProvider = ({ children }) => {
     sidebarState: "",
     currentVideo: {},
     videoLib: [],
+    searchResults: [],
     videoLibUpdated: [],
     playlists: [],
     newPlaylists:[],

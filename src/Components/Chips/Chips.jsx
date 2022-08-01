@@ -28,7 +28,7 @@ const Chips = () => {
         }}
         className={`chips ${state.catSelect==="Sci_Fi" && "selected"}`}
       >
-        Sci-Fi
+        SciFi
       </div>
       <div
         onClick={() => {

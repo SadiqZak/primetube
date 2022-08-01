@@ -4,6 +4,7 @@ import { CardContext } from '../../utils/card-context';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { AuthContext } from '../../utils/auth-context';
+import Header from '../../Components/Header/Header';
 
 const PlayList=()=>{
   const { state, deletePlaylist } = useContext(CardContext);
@@ -11,7 +12,8 @@ const PlayList=()=>{
   const { token } = stateAuth;
 
   return (
-    <div className="video-container flex">
+    <>
+      <div className="video-container flex">
     <Sidebar />
     <div className="recommended-videos color-primary">
       <div>
@@ -38,6 +40,8 @@ const PlayList=()=>{
         ))}
     </div>
     </div> 
+    </>
+    
   );
 }
 

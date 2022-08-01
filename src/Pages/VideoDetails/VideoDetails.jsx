@@ -6,6 +6,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import { AuthContext } from "../../utils/auth-context";
 import { useEffect } from "react";
 import { useState } from "react";
+import Header from "../../Components/Header/Header";
 
 const VideoDetails = () => {
   const { videoId } = useParams();
@@ -31,11 +32,12 @@ const VideoDetails = () => {
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { token } = stateAuth;
 
+
   const { _id, id, title, source, img } = currentVideo;
 
   useEffect(() => {
     getVideo({ videoId: videoId });
-  }, []);
+  }, [videoId]);
 
   useEffect(() => {
     getPlaylist({ encodedToken: token });
@@ -57,7 +59,7 @@ const VideoDetails = () => {
   };
 
   return (
-    <div className="video-container flex">
+      <div className="video-container flex">
       <Sidebar />
       <div className="color-primary recommended-videos">
         <div className="video-header-container">
@@ -232,6 +234,7 @@ const VideoDetails = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

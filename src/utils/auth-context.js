@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   // const [auth, setAuth] = useState({token:"", isAuthenticated:false})
-  const [stateAuth, dispatch] = useReducer(reducerFunc, {
+  const [stateAuth, dispatchAuth] = useReducer(reducerFunc, {
     user:{},
     token:null,
     isAuthenticated: false
@@ -15,8 +15,7 @@ const AuthProvider = ({ children }) => {
   const LoginUser = async({email, password})=>{
     try{
       const response = await LoginService({email, password})
-      console.log(response.data)
-      dispatch({type:'UpdateUser', payload:response.data})
+      dispatchAuth({type:'UpdateUser', payload:response.data})
     }catch(err){
       console.error(err)
     }
@@ -25,15 +24,14 @@ const AuthProvider = ({ children }) => {
   const signupUser = async({email, password, firstName, lastName})=>{
     try{
       const response = await signupService({email, password, firstName, lastName})
-      console.log(response.data)
-      dispatch({type:'UpdateUserSignup', payload:response.data})
+      dispatchAuth({type:'UpdateUserSignup', payload:response.data})
     }catch(err){
       console.error(err)
     }
   }
 
   return (
-    <AuthContext.Provider value={{ stateAuth, dispatch, LoginUser, signupUser }}>
+    <AuthContext.Provider value={{ stateAuth, dispatchAuth, LoginUser, signupUser }}>
       {children}
     </AuthContext.Provider>
   );

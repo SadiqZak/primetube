@@ -12,6 +12,12 @@ const reducerFunc = (state, action) => {
         ...state,
         catSelect: action.type,
       };
+    case "SearchResults":
+      return{
+        ...state,
+        searchResults: action.payload,
+        // catSelect:""
+      }
     case "Games":
       return {
         ...state,

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useContext } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../utils/auth-context'
+import Header from '../../Components/Header/Header'
 
 const Signup = () => {
     const [userLog, setUserLog] = useState({email:"", password:"", firstName:"", lastName:""})
@@ -15,7 +16,7 @@ const Signup = () => {
     }
     
   return (
-    <>
+
     <div className="login-management">
       <div className="login-management-wrapper">
         <div className="login-manage-header">
@@ -82,7 +83,6 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  </>
   )
 }
 
