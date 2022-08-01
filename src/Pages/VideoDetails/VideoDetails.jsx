@@ -22,6 +22,8 @@ const VideoDetails = () => {
     postPlaylistVideo,
     getPlaylist,
     deletePlaylistVideo,
+    getUserHistory,
+    postUserHistory
   } = useContext(CardContext);
   const { stateAuth } = useContext(AuthContext);
   const [clickedPlaylist, setClickedPlaylist] = useState(false);

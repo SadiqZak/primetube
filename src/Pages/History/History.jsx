@@ -25,8 +25,8 @@ const History = () => {
       <div>
       <h3>History</h3><button onClick={clickHandler} className="login-btn">Clear History</button>
       </div>  
-      {[...state.history].map(({ id, img, title, source }) => (
-          <Link key={id} className="link-tag" to={`/videodetails/${id}`}>
+      {state.history.map(({ _id, img, title, source }) => (
+          <Link key={_id} className="link-tag" to={`/videodetails/${_id}`}>
             <div className="videoCard">
               <img className="video-thumbnail" src={img} alt="" />
               <div className="video-footer">

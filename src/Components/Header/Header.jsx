@@ -9,29 +9,41 @@ import Chips from "../Chips/Chips";
 const Header = () => {
   const navigate = useNavigate();
   const { stateAuth, dispatchAuth } = useContext(AuthContext);
-  const { state, dispatch } = useContext(CardContext);
-  const { videoLibUpdated, searchResults } = state;
+  const { state, dispatch, getUserHistory, postUserHistory } = useContext(CardContext);
+  const { videoLibUpdated, history } = state;
+  const {token} = stateAuth
   const [userSearch, setUserSearch] = useState("");
+  const [userSearchResults, setUserResearchResults] = useState("")
   const { isAuthenticated } = stateAuth;
+
+  const test =(value)=>{
+    return videoLibUpdated.filter((video) => video.title.toLowerCase().includes(value))
+  }
 
   const inputHandler = (e) => {
     setUserSearch(e.target.value);
-    let result = videoLibUpdated.filter((video) =>
-      video.title.toLowerCase().includes(userSearch)
-    );
-    dispatch({ type: "SearchResults", payload: result });
+    let result = test(userSearch)
+    setUserResearchResults(result)
   };
 
-  const clickHandler = ()=>{
+  const clickHandler = (id)=>{
     setUserSearch("")
+    const historyCheck = history?.some((historyVid)=>historyVid._id===id)
+    const video = videoLibUpdated.find((video)=>video._id===id)
+    if(!historyCheck){
+      postUserHistory({encodedToken:token, video:video})
+    }else{
+      getUserHistory({encodedToken:token})
+    }
   }
 
   const submitHandler =(e)=>{
     e.preventDefault()
-    return
+    dispatch({ type: "SearchResults", payload:userSearchResults });
+    setUserSearch("")
   }
 
-  console.log(searchResults)
+
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -41,7 +53,7 @@ const Header = () => {
           <input
             value={userSearch}
             onChange={inputHandler}
-            placeholder="Search"
+            placeholder="Type here to start searching for something.."
             type="text"
           />
           {userSearch.length === 0 ? (
@@ -56,9 +68,9 @@ const Header = () => {
           {
           userSearch.length!==0 &&
           <div className="dropdown">
-            {
-                 searchResults.map((result)=>(
-                  <Link onClick={clickHandler} className="link-tag-header" to={`/videoDetails/${result._id}`}>
+            { userSearchResults.length !==0 ?
+                 userSearchResults.map((result)=>(
+                  <Link onClick={()=>clickHandler(result._id)} className="link-tag-header" to={`/videoDetails/${result._id}`}>
                     <div className="search-cont">
                     <div className="search-thumb-cont">
                       <img className="search-thumb" src={result.img} alt="img"/>
@@ -70,6 +82,7 @@ const Header = () => {
                   </Link>
                 
                 ))
+                :<div className="search-cont">No information available</div>
             }
           </div>
        

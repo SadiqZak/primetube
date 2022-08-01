@@ -3,13 +3,15 @@ import { useContext } from "react"
 import { CardContext } from "../../utils/card-context"
 
 const Card = () =>{
-    const {filteredData} = useContext(CardContext)
+    const {filteredData, state} = useContext(CardContext)
 
     return<>
         <div className='recommended-videos'>
-          {filteredData.map((video)=>(
+          {filteredData.length!==0 ? filteredData.map((video)=>(
               <CardChild key={video.id} video={video}/>
-          ))}
+          ))
+        : <div>No videos under this category</div>
+        }
         </div>
     </>
 }
