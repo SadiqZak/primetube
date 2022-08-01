@@ -43,7 +43,7 @@ export const getLikedVideosHandler = function (schema, request) {
  * */
 
 export const addItemToLikedVideos = function (schema, request) {
-  debugger
+  // debugger
   const user = requiresAuth.call(this, request);
   if (user) {
     const { video } = JSON.parse(request.requestBody);

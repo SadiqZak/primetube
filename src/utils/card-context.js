@@ -30,6 +30,7 @@ const CardProvider = ({ children }) => {
     sidebarState: "",
     currentVideo: {},
     videoLib: [],
+    searchResults: [],
     videoLibUpdated: [],
     playlists: [],
     newPlaylists:[],
@@ -203,7 +204,12 @@ const CardProvider = ({ children }) => {
     }
   }
 
-  const filteredData = filter(state.videoLibUpdated, state.catSelect);
+  let filteredData = []
+  if(state.searchResults.length!==0){
+    filteredData = filter(state.searchResults, state.catSelect)
+  }else{
+    filteredData = filter(state.videoLibUpdated, state.catSelect);
+  }
 
   return (
     <CardContext.Provider
