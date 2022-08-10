@@ -17,14 +17,49 @@ const Header = () => {
   const { isAuthenticated } = stateAuth;
 
   const test =(value)=>{
-    return videoLibUpdated.filter((video) => video.title.toLowerCase().includes(value))
+    return videoLibUpdated.filter((video) => video.title.toLowerCase().match(value.toLowerCase()))
   }
 
   const inputHandler = (e) => {
+    e.preventDefault()
     setUserSearch(e.target.value);
-    let result = test(userSearch)
-    setUserResearchResults(result)
+    setUserResearchResults(test(e.target.value))
+   
   };
+
+  const submitHandler =(e)=>{
+    e.preventDefault()
+    if(userSearchResults.length!==0){
+      dispatch({ type: "SearchResults", payload:userSearchResults });
+    }
+
+    if("games"=== userSearch.toLowerCase() || "game"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Games"})
+    }else if("scifi"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Sci_Fi"})
+    }else if("javascript" === userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"JavaScript"})
+    }else if("documentary"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Documentary"})
+    }else if("saga"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Saga"})
+    }else if("comedy"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Comedy"})
+    }else if("podcast"=== userSearch.toLowerCase() || "podcasts"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Podcasts"})
+    }else if("movie"=== userSearch.toLowerCase() || "movies"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Movies"})
+    }
+    setUserSearch("")
+  }
 
   const clickHandler = (id)=>{
     setUserSearch("")
@@ -36,13 +71,6 @@ const Header = () => {
       getUserHistory({encodedToken:token})
     }
   }
-
-  const submitHandler =(e)=>{
-    e.preventDefault()
-    dispatch({ type: "SearchResults", payload:userSearchResults });
-    setUserSearch("")
-  }
-
 
   return (
     <div className="header">
