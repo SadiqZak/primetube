@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
     try{
       const response = await LoginService({email, password})
       dispatchAuth({type:'UpdateUser', payload:response.data})
+      return response.data
     }catch(err){
       console.error(err)
     }
@@ -25,6 +26,7 @@ const AuthProvider = ({ children }) => {
     try{
       const response = await signupService({email, password, firstName, lastName})
       dispatchAuth({type:'UpdateUserSignup', payload:response.data})
+      return response.data
     }catch(err){
       console.error(err)
     }

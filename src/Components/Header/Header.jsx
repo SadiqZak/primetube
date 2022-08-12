@@ -66,6 +66,7 @@ const Header = () => {
   }
 
   let categoryChips = ['games', 'game','scifi', 'javascript','documentary', 'documentaries', 'saga', 'comedy', 'podcasts', 'movie', 'movies']
+  
   const clickHandler = (id)=>{
     setUserSearch("")
     const historyCheck = history?.some((historyVid)=>historyVid._id===id)
@@ -101,14 +102,7 @@ const Header = () => {
           {
           userSearch.length!==0 &&
           <div className="dropdown">
-            {
-              categoryChips.some((ele)=>ele.category===userSearch.toLowerCase()) ?
-              <div className="search-cont">
-              <div className="search-result">
-                {userSearch}
-              </div>
-            </div>
-            :<>
+            <>
             { userSearchResults.length !==0 ?
                  userSearchResults.map((result)=>(
                   <Link onClick={()=>clickHandler(result._id)} className="link-tag-header" to={`/videoDetails/${result._id}`}>
@@ -122,11 +116,20 @@ const Header = () => {
                   </div>
                   </Link>
                 ))
+                :<>
+                  {
+                  categoryChips.some((ele)=>ele.match(userSearch.toLowerCase())) ?
+                  <div className="search-cont">
+                  <div className="search-result">
+                    {userSearch}
+                  </div>
+                </div>
                 :<div className="search-cont">No information available</div>
+                }
+                </>
             }
             
             </>
-            }
             
           </div>
        

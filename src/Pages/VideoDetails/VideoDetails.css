@@ -282,6 +282,7 @@
     .recommended-videos-single{
     padding: 0;
        flex-direction: column;
+       margin-bottom: 10rem;
       }
 
     .video-recommended{

@@ -28,6 +28,7 @@ const VideoDetails = () => {
     postUserHistory,
   } = useContext(CardContext);
   const { stateAuth } = useContext(AuthContext);
+  const {history, videoLibUpdated} = state
   const [clickedPlaylist, setClickedPlaylist] = useState(false);
   const navigate = useNavigate();
   const { currentVideo, likedvideos, watchlater, playlists } = state;
@@ -60,6 +61,16 @@ const VideoDetails = () => {
     }
     setCreatePlaylist(false);
   };
+
+  const clickHandler = (id)=>{
+    const historyCheck = history?.some((historyVid)=>historyVid._id===id)
+    const video = videoLibUpdated.find((video)=>video._id===id)
+    if(!historyCheck){
+      postUserHistory({encodedToken:token, video:video})
+    }else{
+      getUserHistory({encodedToken:token})
+    }
+  }
 
   return (
     <div className="video-container flex">
@@ -342,7 +353,7 @@ const VideoDetails = () => {
               <>
                 {videoCat === video.category && (
                   video._id !== _id &&
-                  <Link className="link-tag" to={`/videodetails/${video._id}`}>
+                  <Link onClick={()=>clickHandler(video._id)} className="link-tag" to={`/videodetails/${video._id}`}>
                   <div className="video-recommended-child">
                     <div className="video-recommended-header">
                       <img
