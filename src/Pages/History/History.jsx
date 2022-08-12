@@ -19,9 +19,9 @@ const History = () => {
     deleteUserHistory({encodedToken:token})
   }
   return (
-    <div className="video-container flex">
+    <div className="video-container flex ">
     <Sidebar />
-    <div className="recommended-videos color-primary">
+    <div className="recommended-videos color-primary margin-check">
       <div>
       <h3>History</h3><button onClick={clickHandler} className="login-btn">Clear History</button>
       </div>  
