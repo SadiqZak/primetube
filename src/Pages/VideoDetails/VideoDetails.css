@@ -1,17 +1,22 @@
 .video-header-container{
     width: 100%;
-    height: 100%;
-    margin: auto;
+    height: 80%;
     color: var(--primary-text-color);
 }
 
+.video-container-wrapper{
+    height: 600px;
+    display: flex;
+    width: 65%;
+}
+
 .video-header{
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 }
 
 .video-play-footer{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -24,6 +29,10 @@
         gap:1rem;
         flex-direction: column;
         padding: 1rem;
+    }
+
+    .video-container-wrapper{
+        width: 100%;
     }
 }
 
@@ -39,7 +48,16 @@
 @media screen and (max-width:1200px){
     .video-header{
         width: 100%;
-        min-height: auto;
+        min-height: 300px;
+        height: max-content;
+    }
+
+    .video-header-container{
+        height: 100%;
+    }
+
+    .video-container-wrapper{
+        min-height: 0;
         height: max-content;
     }
 }
@@ -141,3 +159,181 @@
     background-color: var(--menu-bar);
     cursor:pointer;
   }
+
+  /* ------------------------ */
+  .sidebar-single{
+    width: fit-content;
+    padding: 1rem 1rem 1rem 0;
+    background-color: var(--menu-bar);
+    color: var(--primary-text-color);
+    font-size: 0;
+}
+
+.sidebar-wrap-single{
+    position: sticky;
+	top: 95px;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+  .sidebar-child-single{
+    /* height: max-content; */
+    border-radius: 0.1rem;
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-weight: 500;
+    padding: 1rem 0;
+}
+
+
+.sidebar-child-single:hover{
+    background-color: var(--button-color);
+ }
+ 
+ .sidebar-child-single span{
+     margin: 0 1rem 0 1rem;
+     width: 1rem;
+ }
+ 
+ .sidebar-child-single div{
+     text-align: left;
+     justify-content: left;
+ }
+ 
+ .sidebar-child-single.selected{
+     background-color: var(--button-color);
+ }
+
+ @media screen and (max-width:1250px){
+    .sidebar-single{
+        width: 100%;
+        display: flex;
+        position: fixed;
+        bottom: -5px;
+        overflow: hidden;
+    }
+
+    .sidebar-child-single{
+        width: fit-content;
+        font-size: 0;
+    }
+
+    .sidebar-wrap-single{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* ---------------------------- */
+
+.recommended-videos-single{
+    height: max-content;
+    width: 100%;
+    padding: 2rem;
+    gap: 1rem;
+    display: flex;
+    color: var(--primary-text-color);
+  }
+
+.video-recommended{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem ;
+    width: 35%;
+}
+
+.video-recommended-child{
+    background-color: var(--menu-bar);
+    display: flex;
+    height: max-content;
+    width: 100%;
+    cursor: pointer;
+}
+
+.video-thumbnail-recommended{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.video-recommended-header{
+    background-color: var(--button-color);
+    display: flex;
+    height: max-content;
+    width: 200px;
+}
+
+.video-recommended-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+    width: 50%;
+}
+
+@media screen and (max-width:1250px){
+    .recommended-videos-single{
+    padding: 0;
+       flex-direction: column;
+       margin-bottom: 10rem;
+      }
+
+    .video-recommended{
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-recommended-child{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .video-recommended-header{
+        width: 100%;
+    }
+
+    .video-recommended-footer{
+        width: 100%;
+    }
+}
+
+/* ----------------------- */
+.chips-single{
+    border: 1px solid var(--button-color);
+    border-radius: 1rem;
+    background-color: var(--menu-bar);
+    color: var(--primary-text-color);
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: fit-content;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.chips-single:hover{
+    background-color: var(--primary-text-color);
+    color: var(--menu-bar);
+}
+
+.chips-single.selected{
+    background-color: var(--primary-text-color);
+    color: var(--menu-bar);
+}
+
+.wd-single-fc-1{
+    width: 1rem;
+    font-size: 1rem;
+  }
+
+.video-play-title{
+    width: 50%;
+}

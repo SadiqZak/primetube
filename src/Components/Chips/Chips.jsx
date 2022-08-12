@@ -16,6 +16,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Games" });
         }}
         className={`chips ${state.catSelect==="Games" && "selected"}`}
@@ -24,6 +25,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Sci_Fi" });
         }}
         className={`chips ${state.catSelect==="Sci_Fi" && "selected"}`}
@@ -32,6 +34,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "JavaScript" });
         }}
         className={`chips ${state.catSelect==="JavaScript" && "selected"}`}
@@ -40,6 +43,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Documentary" });
         }}
         className={`chips ${state.catSelect==="Documentary" && "selected"}`}
@@ -48,6 +52,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Saga" });
         }}
         className={`chips ${state.catSelect==="Saga" && "selected"}`}
@@ -56,6 +61,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Comedy" });
         }}
         className={`chips ${state.catSelect==="Comedy" && "selected"}`}
@@ -64,6 +70,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Podcasts" });
         }}
         className={`chips ${state.catSelect==="Podcasts" && "selected"}`}
@@ -72,6 +79,7 @@ const Chips = () => {
       </div>
       <div
         onClick={() => {
+          dispatch({ type: "All" });
           dispatch({ type: "Movies" });
         }}
         className={`chips ${state.catSelect==="Movies" && "selected"}`}

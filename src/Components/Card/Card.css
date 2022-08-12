@@ -1,7 +1,7 @@
 .recommended-videos{
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
-    flex:1 1 0;
+    /* flex:1 1 0; */
     flex-wrap: wrap;
     gap: 1rem;
     color: var(--primary-text-color);

@@ -17,15 +17,56 @@ const Header = () => {
   const { isAuthenticated } = stateAuth;
 
   const test =(value)=>{
-    return videoLibUpdated.filter((video) => video.title.toLowerCase().includes(value))
+    return videoLibUpdated.filter((video) => video.title.toLowerCase().match(value.toLowerCase()))
+  }
+
+  const testCat =(value)=>{
+    return videoLibUpdated.filter((video) => video.category.toLowerCase().match(value.toLowerCase()))
   }
 
   const inputHandler = (e) => {
+    e.preventDefault()
     setUserSearch(e.target.value);
-    let result = test(userSearch)
-    setUserResearchResults(result)
+    setUserResearchResults(test(e.target.value))
+   
   };
 
+  const submitHandler =(e)=>{
+    e.preventDefault()
+    if(userSearchResults.length!==0){
+      dispatch({ type: "SearchResults", payload:userSearchResults });
+    }
+
+    if("games"=== userSearch.toLowerCase() || "game"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Games"})
+    }else if("scifi"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Sci_Fi"})
+    }else if("javascript" === userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"JavaScript"})
+    }else if("documentary"=== userSearch.toLowerCase() || "documentaries"=== userSearch.toLowerCase()  ){
+      dispatch({type:"All"})
+      dispatch({type:"Documentary"})
+    }else if("saga"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Saga"})
+    }else if("comedy"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Comedy"})
+    }else if("podcast"=== userSearch.toLowerCase() || "podcasts"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Podcasts"})
+    }else if("movie"=== userSearch.toLowerCase() || "movies"=== userSearch.toLowerCase()){
+      dispatch({type:"All"})
+      dispatch({type:"Movies"})
+    }
+    setUserSearch("")
+  }
+
+  let categoryChips = ['games', 'game','scifi', 'javascript','documentary', 'documentaries', 'saga', 'comedy', 'podcasts', 'movie', 'movies']
+  
   const clickHandler = (id)=>{
     setUserSearch("")
     const historyCheck = history?.some((historyVid)=>historyVid._id===id)
@@ -36,13 +77,6 @@ const Header = () => {
       getUserHistory({encodedToken:token})
     }
   }
-
-  const submitHandler =(e)=>{
-    e.preventDefault()
-    dispatch({ type: "SearchResults", payload:userSearchResults });
-    setUserSearch("")
-  }
-
 
   return (
     <div className="header">
@@ -68,6 +102,7 @@ const Header = () => {
           {
           userSearch.length!==0 &&
           <div className="dropdown">
+            <>
             { userSearchResults.length !==0 ?
                  userSearchResults.map((result)=>(
                   <Link onClick={()=>clickHandler(result._id)} className="link-tag-header" to={`/videoDetails/${result._id}`}>
@@ -80,10 +115,22 @@ const Header = () => {
                     </div>
                   </div>
                   </Link>
-                
                 ))
+                :<>
+                  {
+                  categoryChips.some((ele)=>ele.match(userSearch.toLowerCase())) ?
+                  <div className="search-cont">
+                  <div className="search-result">
+                    {userSearch}
+                  </div>
+                </div>
                 :<div className="search-cont">No information available</div>
+                }
+                </>
             }
+            
+            </>
+            
           </div>
        
         }
