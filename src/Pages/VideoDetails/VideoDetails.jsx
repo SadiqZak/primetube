@@ -113,7 +113,7 @@ const VideoDetails = () => {
               dispatch({ type: "Liked Videos" });
             }}
             className="link-tag"
-            to={"/playlist"}
+            to={"/likedvideos"}
           >
             <div
               className={`sidebar-child-single ${

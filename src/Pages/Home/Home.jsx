@@ -21,7 +21,7 @@ const Home = () => {
     <>
       <div className="video-container flex">
         <Sidebar />
-        <div className="color-primary wd-100">
+        <div className="color-primary wd-100 margin-check">
           <Chips/>
           <Card />
         </div>

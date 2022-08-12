@@ -10,7 +10,7 @@ const LikedVideos=()=>{
   return (
     <div className="video-container flex">
     <Sidebar />
-    <div className="recommended-videos color-primary">
+    <div className="recommended-videos color-primary margin-check">
       <div>
       <h3>LikedVideos</h3><button onClick={()=>dispatch({type:"ClearLikedVideos"})} className="login-btn">Clear All</button>
       </div>  
