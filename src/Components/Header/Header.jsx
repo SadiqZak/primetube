@@ -20,6 +20,10 @@ const Header = () => {
     return videoLibUpdated.filter((video) => video.title.toLowerCase().match(value.toLowerCase()))
   }
 
+  const testCat =(value)=>{
+    return videoLibUpdated.filter((video) => video.category.toLowerCase().match(value.toLowerCase()))
+  }
+
   const inputHandler = (e) => {
     e.preventDefault()
     setUserSearch(e.target.value);
@@ -42,7 +46,7 @@ const Header = () => {
     }else if("javascript" === userSearch.toLowerCase()){
       dispatch({type:"All"})
       dispatch({type:"JavaScript"})
-    }else if("documentary"=== userSearch.toLowerCase()){
+    }else if("documentary"=== userSearch.toLowerCase() || "documentaries"=== userSearch.toLowerCase()  ){
       dispatch({type:"All"})
       dispatch({type:"Documentary"})
     }else if("saga"=== userSearch.toLowerCase()){
@@ -61,6 +65,7 @@ const Header = () => {
     setUserSearch("")
   }
 
+  let categoryChips = ['games', 'game','scifi', 'javascript','documentary', 'documentaries', 'saga', 'comedy', 'podcasts', 'movie', 'movies']
   const clickHandler = (id)=>{
     setUserSearch("")
     const historyCheck = history?.some((historyVid)=>historyVid._id===id)
@@ -96,6 +101,14 @@ const Header = () => {
           {
           userSearch.length!==0 &&
           <div className="dropdown">
+            {
+              categoryChips.some((ele)=>ele.category===userSearch.toLowerCase()) ?
+              <div className="search-cont">
+              <div className="search-result">
+                {userSearch}
+              </div>
+            </div>
+            :<>
             { userSearchResults.length !==0 ?
                  userSearchResults.map((result)=>(
                   <Link onClick={()=>clickHandler(result._id)} className="link-tag-header" to={`/videoDetails/${result._id}`}>
@@ -108,10 +121,13 @@ const Header = () => {
                     </div>
                   </div>
                   </Link>
-                
                 ))
                 :<div className="search-cont">No information available</div>
             }
+            
+            </>
+            }
+            
           </div>
        
         }

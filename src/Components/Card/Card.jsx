@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { CardContext } from "../../utils/card-context"
 
 const Card = () =>{
-    const {filteredData, state} = useContext(CardContext)
+    const {filteredData} = useContext(CardContext)
 
     return<>
         <div className='recommended-videos'>
